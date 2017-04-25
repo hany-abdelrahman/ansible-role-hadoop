@@ -19,14 +19,6 @@
   - gzip
   - default-jre-headless
 
-# download only in the ansible master node
-- local_action: get_url url={{ hadoop_mirrors|random }}/hadoop-{{ hadoop_version }}.tar.gz dest=/opt/hadoop-{{ hadoop_version }}.tar.gz force=no
-  register: result
-  until: result|success
-  retries: 5
-  delay: 2
-  when: hadoop_type_of_node == 'master'
-
 # download hadoop on all nodes
 - get_url: url={{ hadoop_mirrors|random }}/hadoop-{{ hadoop_version }}.tar.gz dest=/opt/hadoop-{{ hadoop_version }}.tar.gz force=no
   register: result
