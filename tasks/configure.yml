@@ -13,6 +13,15 @@
    - restart hadoop-datanode
    - restart yarn-nodemanager
 
+- template: src=hdfs-site.xml dest="{{ hadoop_home }}/etc/hadoop/hdfs-site.xml" owner=root group=root
+  notify:
+   - refreshDFSNodes
+   - refreshYarnNodes
+   - restart hadoop-dfs
+   - restart yarn-resourcemanager
+   - restart hadoop-datanode
+   - restart yarn-nodemanager
+
 - template: src=slaves dest="{{ hadoop_home }}/etc/hadoop/slaves" owner=root group=root
   notify:
    - refreshDFSNodes
