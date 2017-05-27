@@ -4,4 +4,12 @@
     <name>dfs.permissions</name>
     <value>false</value>
   </property>	
+  <property>
+    <name>hadoop.trace.spanreceiver.classes</name>
+    <value>org.htrace.impl.LocalFileSpanReceiver</value>
+  </property>
+  <property>
+    <name>hadoop.local-file-span-receiver.path</name>
+    <value>/var/log/hadoop/htrace.out</value>
+  </property>
 </configuration>
